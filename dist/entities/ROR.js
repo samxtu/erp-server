@@ -51,6 +51,11 @@ __decorate([
     __metadata("design:type", Number)
 ], ROR.prototype, "selling", void 0);
 __decorate([
+    type_graphql_1.Field({ nullable: true }),
+    typeorm_1.Column({ type: "bigint", nullable: true }),
+    __metadata("design:type", Number)
+], ROR.prototype, "pieces", void 0);
+__decorate([
     type_graphql_1.Field(),
     typeorm_1.Column({ type: "int" }),
     __metadata("design:type", Number)

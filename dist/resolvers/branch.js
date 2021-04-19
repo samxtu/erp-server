@@ -68,7 +68,7 @@ let BranchResolver = class BranchResolver {
                 yield Branch_1.Branch.create(Object.assign({}, args)).save();
             }
             catch (err) {
-                console.log(err.message);
+                console.error(err);
                 return {
                     status: false,
                     error: { target: "general", message: err.message },
@@ -79,7 +79,7 @@ let BranchResolver = class BranchResolver {
     }
     editBranch(id, args) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!name || name === "")
+            if (!args.name || args.name === "")
                 return {
                     status: false,
                     error: { target: "name", message: "Name can not be empty!" },

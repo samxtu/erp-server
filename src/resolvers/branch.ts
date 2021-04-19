@@ -42,9 +42,9 @@ export class BranchResolver {
     @Ctx() { req }: MyContext
   ): Promise<BooleanResponse> {
     try {
-      await Branch.create({ ...args}).save();
+      await Branch.create({ ...args }).save();
     } catch (err) {
-      console.log(err.message);
+      console.error(err);
       return {
         status: false,
         error: { target: "general", message: err.message },
@@ -59,7 +59,7 @@ export class BranchResolver {
     @Arg("id") id: number,
     @Arg("args") args: BranchInput
   ): Promise<BooleanResponse> {
-    if (!name || name === "")
+    if (!args.name || args.name === "")
       return {
         status: false,
         error: { target: "name", message: "Name can not be empty!" },
@@ -99,7 +99,7 @@ export class BranchResolver {
 
   @Query(() => [Branch])
   async getBranches(): Promise<Branch[]> {
-    let reqRes: Branch[] = await Branch.find({relations:["region"]});
+    let reqRes: Branch[] = await Branch.find({ relations: ["region"] });
     return reqRes;
   }
 

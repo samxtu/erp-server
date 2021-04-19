@@ -79,6 +79,10 @@ export class User extends BaseEntity {
   salary: number;
 
   @Field()
+  @Column({ type: "boolean", default: true })
+  employee: boolean;
+
+  @Field()
   @Column({ type: "int" })
   roleId: number;
 

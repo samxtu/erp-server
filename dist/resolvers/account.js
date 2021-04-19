@@ -139,10 +139,14 @@ let AccountResolver = class AccountResolver {
     getAccounts(branch) {
         return __awaiter(this, void 0, void 0, function* () {
             let reqRes;
-            if (branch)
-                reqRes = yield Account_1.Account.find({ where: { branchId: branch } });
+            if (branch) {
+                reqRes = yield Account_1.Account.find({
+                    where: { branchId: branch },
+                    relations: ["branch"],
+                });
+            }
             else
-                reqRes = yield Account_1.Account.find();
+                reqRes = yield Account_1.Account.find({ relations: ["branch"] });
             return reqRes;
         });
     }
@@ -189,7 +193,7 @@ __decorate([
 ], AccountResolver.prototype, "deleteAccount", null);
 __decorate([
     type_graphql_1.Query(() => [Account_1.Account]),
-    __param(0, type_graphql_1.Arg("branch")),
+    __param(0, type_graphql_1.Arg("branch", { nullable: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)

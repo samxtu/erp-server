@@ -95,6 +95,11 @@ __decorate([
 ], User.prototype, "salary", void 0);
 __decorate([
     type_graphql_1.Field(),
+    typeorm_1.Column({ type: "boolean", default: true }),
+    __metadata("design:type", Boolean)
+], User.prototype, "employee", void 0);
+__decorate([
+    type_graphql_1.Field(),
     typeorm_1.Column({ type: "int" }),
     __metadata("design:type", Number)
 ], User.prototype, "roleId", void 0);

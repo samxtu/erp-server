@@ -126,10 +126,16 @@ export class AccountResolver {
   }
 
   @Query(() => [Account])
-  async getAccounts(@Arg("branch") branch: number): Promise<Account[]> {
+  async getAccounts(
+    @Arg("branch", { nullable: true }) branch: number
+  ): Promise<Account[]> {
     let reqRes: Account[];
-    if (branch) reqRes = await Account.find({ where: { branchId: branch } });
-    else reqRes = await Account.find();
+    if (branch) {
+      reqRes = await Account.find({
+        where: { branchId: branch },
+        relations: ["branch"],
+      });
+    } else reqRes = await Account.find({ relations: ["branch"] });
     return reqRes;
   }
 

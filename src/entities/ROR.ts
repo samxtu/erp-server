@@ -37,6 +37,10 @@ export class ROR extends BaseEntity {
   @Column({ type: "bigint" })
   selling: number;
 
+  @Field({ nullable: true })
+  @Column({ type: "bigint", nullable: true })
+  pieces: number;
+
   @Field()
   @Column({ type: "int" })
   creatorId!: number;

@@ -47,6 +47,8 @@ class RegisterArgs {
   creditDays: number;
   @Field()
   credit: boolean;
+  @Field()
+  employee: boolean;
   @Field(() => Float)
   balance: number;
   @Field(() => Float)
@@ -251,11 +253,13 @@ export class UserResolver {
 
   @Query(() => [User])
   @UseMiddleware(isAuth)
-  async getUsers(@Arg("role") role: number): Promise<User[]> {
+  async getUsers(
+    @Arg("employee", { nullable: true }) employee: boolean
+  ): Promise<User[]> {
     let reqRes: User[];
-    if (role)
+    if (employee)
       reqRes = await User.find({
-        where: { roleId: role },
+        where: { employee: employee },
         relations: ["role", "branch"],
       });
     else reqRes = await User.find({ relations: ["role", "branch"] });
@@ -266,8 +270,8 @@ export class UserResolver {
   getUser(@Arg("id") id: number): Promise<User | undefined> {
     return User.findOne(id, {
       relations: [
-        "creator",
         "role",
+        "branch",
         "payments",
         "suppliedPurchases",
         "attendances",

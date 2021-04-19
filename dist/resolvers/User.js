@@ -77,6 +77,10 @@ __decorate([
     __metadata("design:type", Boolean)
 ], RegisterArgs.prototype, "credit", void 0);
 __decorate([
+    type_graphql_1.Field(),
+    __metadata("design:type", Boolean)
+], RegisterArgs.prototype, "employee", void 0);
+__decorate([
     type_graphql_1.Field(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], RegisterArgs.prototype, "balance", void 0);
@@ -281,12 +285,12 @@ let UserResolver = class UserResolver {
             return sesh;
         });
     }
-    getUsers(role) {
+    getUsers(employee) {
         return __awaiter(this, void 0, void 0, function* () {
             let reqRes;
-            if (role)
+            if (employee)
                 reqRes = yield User_1.User.find({
-                    where: { roleId: role },
+                    where: { employee: employee },
                     relations: ["role", "branch"],
                 });
             else
@@ -297,8 +301,8 @@ let UserResolver = class UserResolver {
     getUser(id) {
         return User_1.User.findOne(id, {
             relations: [
-                "creator",
                 "role",
+                "branch",
                 "payments",
                 "suppliedPurchases",
                 "attendances",
@@ -362,9 +366,9 @@ __decorate([
 __decorate([
     type_graphql_1.Query(() => [User_1.User]),
     type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("role")),
+    __param(0, type_graphql_1.Arg("employee", { nullable: true })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [Boolean]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "getUsers", null);
 __decorate([

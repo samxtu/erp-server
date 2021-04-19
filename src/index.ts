@@ -41,7 +41,7 @@ const main = async () => {
     username: DB_USER,
     password: DB_PASSWORD,
     logging: true,
-    synchronize: false, //never true in production
+    synchronize: true, //never true in production
     entities: [path.join(__dirname, "./entities/*")],
     migrations: [path.join(__dirname, "./migrations/*")],
     cli: {

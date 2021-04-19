@@ -122,10 +122,17 @@ export class AssetResolver {
   }
 
   @Query(() => [Asset])
-  async getAssets(@Arg("branch") branch: number): Promise<Asset[]> {
+  async getAssets(
+    @Arg("branch", { nullable: true }) branch: number
+  ): Promise<Asset[]> {
     let reqRes: Asset[];
-    if (branch) reqRes = await Asset.find({ where: { branchId: branch } });
-    else reqRes = await Asset.find();
+    if (branch)
+      reqRes = await Asset.find({
+        where: { branchId: branch },
+        relations: ["branch", "receivedExpenses"],
+      });
+    else
+      reqRes = await Asset.find({ relations: ["branch", "receivedExpenses"] });
     return reqRes;
   }
 

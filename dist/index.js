@@ -45,7 +45,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         username: constants_1.DB_USER,
         password: constants_1.DB_PASSWORD,
         logging: true,
-        synchronize: false,
+        synchronize: true,
         entities: [path_1.default.join(__dirname, "./entities/*")],
         migrations: [path_1.default.join(__dirname, "./migrations/*")],
         cli: {

@@ -139,9 +139,12 @@ let AssetResolver = class AssetResolver {
         return __awaiter(this, void 0, void 0, function* () {
             let reqRes;
             if (branch)
-                reqRes = yield Asset_1.Asset.find({ where: { branchId: branch } });
+                reqRes = yield Asset_1.Asset.find({
+                    where: { branchId: branch },
+                    relations: ["branch", "receivedExpenses"],
+                });
             else
-                reqRes = yield Asset_1.Asset.find();
+                reqRes = yield Asset_1.Asset.find({ relations: ["branch", "receivedExpenses"] });
             return reqRes;
         });
     }
@@ -188,7 +191,7 @@ __decorate([
 ], AssetResolver.prototype, "deleteAsset", null);
 __decorate([
     type_graphql_1.Query(() => [Asset_1.Asset]),
-    __param(0, type_graphql_1.Arg("branch")),
+    __param(0, type_graphql_1.Arg("branch", { nullable: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)

@@ -19,6 +19,8 @@ class RORInput {
   name: string;
   @Field()
   buying: number;
+  @Field({ nullable: true })
+  pieces: number;
   @Field()
   selling: number;
 }

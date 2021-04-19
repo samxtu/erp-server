@@ -37,6 +37,10 @@ __decorate([
     __metadata("design:type", Number)
 ], RORInput.prototype, "buying", void 0);
 __decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", Number)
+], RORInput.prototype, "pieces", void 0);
+__decorate([
     type_graphql_1.Field(),
     __metadata("design:type", Number)
 ], RORInput.prototype, "selling", void 0);
