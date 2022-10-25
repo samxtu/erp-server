@@ -38,7 +38,7 @@ export class Purchase extends BaseEntity {
   @Field()
   @Column({ type: "int" })
   productId: number;
-
+ 
   @Field()
   @Column({ type: "int", default: 0 })
   quantity: number;
@@ -56,7 +56,7 @@ export class Purchase extends BaseEntity {
   pieceSellingPrice: number;
 
   @Field()
-  @Column()
+  @Column({ nullable: true })
   receipt: string;
 
   @Field()

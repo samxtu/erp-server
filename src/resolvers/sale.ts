@@ -53,6 +53,7 @@ export class SaleResolver {
     @Ctx() { req }: MyContext
   ): Promise<BooleanResponse> {
     let cred: number;
+    let error: { target: string | undefined, message: string } = { target: undefined, message: ""};
     if (
       (args.sellingPrice === 0 && args.pieceSellingPrice === 0) ||
       (args.quantity === 0 && args.pieceQuantity === 0) ||
@@ -80,19 +81,15 @@ export class SaleResolver {
             args.sellingPrice * args.quantity +
               args.pieceSellingPrice * args.pieceQuantity
           ) {
-            cred =
-              args.sellingPrice * args.quantity +
-              args.pieceSellingPrice * args.pieceQuantity -
-              args.payed;
+            cred = args.payed - 
+            args.sellingPrice * args.quantity +
+            args.pieceSellingPrice * args.pieceQuantity;
             if (client.credit) client.balance = client.balance + cred;
             if (!client.credit) {
-              let diff = client.balance - cred;
-              if (diff < 0) {
-                client.balance = -diff;
-                client.credit = true;
-              } else {
-                client.balance = diff;
-              }
+              let diff = client.balance + cred;
+              client.credit = true;
+              client.balance = diff;
+              error = { target: "warning", message: "User credits activated!"}
             }
             await client.save();
           }
@@ -154,7 +151,7 @@ export class SaleResolver {
         error: { target: "general", message: err.message },
       };
     }
-    return { status: true };
+    return { status: true, error: error };
   }
 
   @Mutation(() => BooleanResponse)

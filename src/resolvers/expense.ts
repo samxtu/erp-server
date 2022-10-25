@@ -28,7 +28,7 @@ class ExpenseInput {
   authorizerId: number;
   @Field()
   staffId: number;
-  @Field()
+  @Field({nullable: true})
   assetId: number;
   @Field(() => Float)
   ammount: number;
@@ -152,7 +152,7 @@ export class ExpenseResolver {
   @Query(() => [Expense])
   async getExpenses(): Promise<Expense[]> {
     let reqRes: Expense[] = await Expense.find({
-      relations: ["authorizer", "staff", "asset", "account"],
+      relations: ["authorizer", "staff", "account"],
       order: { expenseDate: "DESC" },
     });
     return reqRes;

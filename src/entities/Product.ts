@@ -44,23 +44,23 @@ export class Product extends BaseEntity {
 
   @Field()
   @Column()
-  unit!: string;
+  unit!: string; //This is the unit for buying and selling the product example soda can be bought in crates so crate is the unit
 
   @Field()
   @Column()
-  pieceUnit: string;
+  pieceUnit: string; //This is the unit of pieces of our product example soda can be bought in crates but can be sold in bottles so a bottle is the subunit for our product
 
   @Field()
   @Column({ type: "int" })
-  pieces!: number;
+  pieces!: number; //How many subunits in one unit? for a crate there are 24 soda bottles so 24 are our pieces
 
   @Field(() => [Purchase])
   @OneToMany(() => Purchase, (purchase) => purchase.product)
-  purchases: Purchase[];
+  purchases: Purchase[]; // this is what adds products to our inventory
 
   @Field(() => [IncentiveSheet])
   @OneToMany(() => IncentiveSheet, (IS) => IS.product)
-  incentiveSheets: IncentiveSheet[];
+  incentiveSheets: IncentiveSheet[]; //if we give incentives to our employees this is where we set how much they get from selling the product
 
   @Field(() => [Incentive])
   @OneToMany(() => Incentive, (IS) => IS.product)
@@ -68,15 +68,15 @@ export class Product extends BaseEntity {
 
   @Field(() => [Sale])
   @OneToMany(() => Sale, (sale) => sale.product)
-  sold: Sale[];
+  sold: Sale[]; //here we store how many units of product has been sold
 
   @Field()
   @Column({ type: "int", default: 0 })
-  stock: number;
+  stock: number; //our inventory decrease by sales and increase by purchases
 
   @Field()
   @Column({ type: "int", default: 0 })
-  pieceStock: number;
+  pieceStock: number; //incase a unit was sold by pieces, how many remains
 
   @Field()
   @Column({ type: "bigint", default: 0 })

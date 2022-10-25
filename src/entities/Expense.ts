@@ -48,7 +48,7 @@ export class Expense extends BaseEntity {
   staff: User;
 
   @Field()
-  @Column({ type: "int" })
+  @Column({ type: "int", nullable: true })
   assetId: number;
 
   @Field(() => Asset)

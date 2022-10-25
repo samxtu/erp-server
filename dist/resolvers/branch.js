@@ -29,36 +29,36 @@ const User_1 = require("./User");
 let BranchInput = class BranchInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], BranchInput.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], BranchInput.prototype, "phone", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], BranchInput.prototype, "regionId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], BranchInput.prototype, "street", void 0);
 BranchInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], BranchInput);
 let BooleanResponse = class BooleanResponse {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Boolean)
 ], BooleanResponse.prototype, "status", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.FieldError, { nullable: true }),
+    (0, type_graphql_1.Field)(() => User_1.FieldError, { nullable: true }),
     __metadata("design:type", User_1.FieldError)
 ], BooleanResponse.prototype, "error", void 0);
 BooleanResponse = __decorate([
-    type_graphql_1.ObjectType()
+    (0, type_graphql_1.ObjectType)()
 ], BooleanResponse);
 exports.BooleanResponse = BooleanResponse;
 let BranchResolver = class BranchResolver {
@@ -131,45 +131,45 @@ let BranchResolver = class BranchResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => BooleanResponse),
-    __param(0, type_graphql_1.Arg("args")),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => BooleanResponse),
+    __param(0, (0, type_graphql_1.Arg)("args")),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [BranchInput, Object]),
     __metadata("design:returntype", Promise)
 ], BranchResolver.prototype, "addBranch", null);
 __decorate([
-    type_graphql_1.Mutation(() => BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args")),
+    (0, type_graphql_1.Mutation)(() => BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, BranchInput]),
     __metadata("design:returntype", Promise)
 ], BranchResolver.prototype, "editBranch", null);
 __decorate([
-    type_graphql_1.Mutation(() => BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], BranchResolver.prototype, "deleteBranch", null);
 __decorate([
-    type_graphql_1.Query(() => [Branch_1.Branch]),
+    (0, type_graphql_1.Query)(() => [Branch_1.Branch]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BranchResolver.prototype, "getBranches", null);
 __decorate([
-    type_graphql_1.Query(() => Branch_1.Branch, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Branch_1.Branch, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], BranchResolver.prototype, "getBranch", null);
 BranchResolver = __decorate([
-    type_graphql_1.Resolver(Branch_1.Branch)
+    (0, type_graphql_1.Resolver)(Branch_1.Branch)
 ], BranchResolver);
 exports.BranchResolver = BranchResolver;
 //# sourceMappingURL=branch.js.map

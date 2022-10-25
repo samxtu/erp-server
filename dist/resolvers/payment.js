@@ -31,31 +31,31 @@ const Account_1 = require("../entities/Account");
 let PaymentInput = class PaymentInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], PaymentInput.prototype, "paymentDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], PaymentInput.prototype, "details", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], PaymentInput.prototype, "payerId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], PaymentInput.prototype, "collectorId", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], PaymentInput.prototype, "ammount", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], PaymentInput.prototype, "accountId", void 0);
 PaymentInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], PaymentInput);
 let PaymentResolver = class PaymentResolver {
     addPayment(args, { req }) {
@@ -69,7 +69,7 @@ let PaymentResolver = class PaymentResolver {
                     },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const acc = yield Account_1.Account.findOne(args.accountId);
                     if (!acc)
                         throw new Error("Account does not exist!");
@@ -105,7 +105,7 @@ let PaymentResolver = class PaymentResolver {
                     error: { target: "general", message: "Payment does not exist!" },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     if (payment.ammount !== args.ammount) {
                         const acc = yield Account_1.Account.findOne(args.accountId);
                         if (!acc)
@@ -144,7 +144,7 @@ let PaymentResolver = class PaymentResolver {
                     },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     acc.balance = acc.balance - payment.ammount;
                     acc.save();
                     yield Payment_1.Payment.delete(payment.id);
@@ -176,46 +176,46 @@ let PaymentResolver = class PaymentResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args", () => PaymentInput)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args", () => PaymentInput)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PaymentInput, Object]),
     __metadata("design:returntype", Promise)
 ], PaymentResolver.prototype, "addPayment", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args", () => PaymentInput)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args", () => PaymentInput)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, PaymentInput]),
     __metadata("design:returntype", Promise)
 ], PaymentResolver.prototype, "editPayment", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], PaymentResolver.prototype, "deletePayment", null);
 __decorate([
-    type_graphql_1.Query(() => [Payment_1.Payment]),
+    (0, type_graphql_1.Query)(() => [Payment_1.Payment]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], PaymentResolver.prototype, "getPayments", null);
 __decorate([
-    type_graphql_1.Query(() => Payment_1.Payment, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Payment_1.Payment, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], PaymentResolver.prototype, "getPayment", null);
 PaymentResolver = __decorate([
-    type_graphql_1.Resolver(Payment_1.Payment)
+    (0, type_graphql_1.Resolver)(Payment_1.Payment)
 ], PaymentResolver);
 exports.PaymentResolver = PaymentResolver;
 //# sourceMappingURL=payment.js.map

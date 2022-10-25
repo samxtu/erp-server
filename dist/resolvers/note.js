@@ -29,15 +29,15 @@ const branch_1 = require("./branch");
 let NoteInput = class NoteInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], NoteInput.prototype, "title", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], NoteInput.prototype, "details", void 0);
 NoteInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], NoteInput);
 let NoteResolver = class NoteResolver {
     addNote(args, { req }) {
@@ -105,47 +105,47 @@ let NoteResolver = class NoteResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args", () => NoteInput)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args", () => NoteInput)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [NoteInput, Object]),
     __metadata("design:returntype", Promise)
 ], NoteResolver.prototype, "addNote", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args", () => NoteInput)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args", () => NoteInput)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, NoteInput]),
     __metadata("design:returntype", Promise)
 ], NoteResolver.prototype, "editNote", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], NoteResolver.prototype, "deleteNote", null);
 __decorate([
-    type_graphql_1.Query(() => [Note_1.Note]),
-    __param(0, type_graphql_1.Arg("user")),
+    (0, type_graphql_1.Query)(() => [Note_1.Note]),
+    __param(0, (0, type_graphql_1.Arg)("user")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], NoteResolver.prototype, "getNotes", null);
 __decorate([
-    type_graphql_1.Query(() => Note_1.Note, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Note_1.Note, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], NoteResolver.prototype, "getNote", null);
 NoteResolver = __decorate([
-    type_graphql_1.Resolver(Note_1.Note)
+    (0, type_graphql_1.Resolver)(Note_1.Note)
 ], NoteResolver);
 exports.NoteResolver = NoteResolver;
 //# sourceMappingURL=note.js.map

@@ -15,7 +15,7 @@ import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { UserResolver } from "./resolvers/User";
 import Redis from "ioredis";
-import session from "express-session";
+const session = require("express-session");
 import connectRedis from "connect-redis";
 import cors from "cors";
 import path from "path";
@@ -33,6 +33,7 @@ import { RoleResolver } from "./resolvers/role";
 import { RORResolver } from "./resolvers/ror";
 import { SaleResolver } from "./resolvers/sale";
 import { RegionsResolver } from "./resolvers/region";
+import { FileResolver } from "./resolvers/uploadFile";
 
 const main = async () => {
   const conn = await createConnection({
@@ -70,7 +71,7 @@ const main = async () => {
       },
       secret: customSecret!,
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
     })
   );
   app.use(
@@ -97,10 +98,11 @@ const main = async () => {
         RoleResolver,
         RORResolver,
         SaleResolver,
+        FileResolver
       ],
       validate: false,
     }),
-    context: ({ req, res }) => ({ req, res, redis }),
+    context: ({ req, res }) => ({ req, res, redis, conn }),
   });
   apolloServer.applyMiddleware({ app, cors: false });
   app.listen(4000, () => {

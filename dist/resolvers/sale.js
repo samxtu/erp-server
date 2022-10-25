@@ -35,52 +35,53 @@ const Incentive_1 = require("../entities/Incentive");
 let SaleInput = class SaleInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], SaleInput.prototype, "saleDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "sellerId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "clientId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "productId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "quantity", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "pieceQuantity", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "sellingPrice", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "pieceSellingPrice", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "payed", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], SaleInput.prototype, "accountId", void 0);
 SaleInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], SaleInput);
 let SaleResolver = class SaleResolver {
     addSale(args, { req }) {
         return __awaiter(this, void 0, void 0, function* () {
             let cred;
+            let error = { target: undefined, message: "" };
             if ((args.sellingPrice === 0 && args.pieceSellingPrice === 0) ||
                 (args.quantity === 0 && args.pieceQuantity === 0) ||
                 (args.quantity === 0 && args.sellingPrice === 0) ||
@@ -93,7 +94,7 @@ let SaleResolver = class SaleResolver {
                     },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const client = yield User_1.User.findOne(args.clientId);
                     if (!client)
                         throw new Error("Client does not exist!");
@@ -106,21 +107,16 @@ let SaleResolver = class SaleResolver {
                         if (args.payed !==
                             args.sellingPrice * args.quantity +
                                 args.pieceSellingPrice * args.pieceQuantity) {
-                            cred =
+                            cred = args.payed -
                                 args.sellingPrice * args.quantity +
-                                    args.pieceSellingPrice * args.pieceQuantity -
-                                    args.payed;
+                                args.pieceSellingPrice * args.pieceQuantity;
                             if (client.credit)
                                 client.balance = client.balance + cred;
                             if (!client.credit) {
-                                let diff = client.balance - cred;
-                                if (diff < 0) {
-                                    client.balance = -diff;
-                                    client.credit = true;
-                                }
-                                else {
-                                    client.balance = diff;
-                                }
+                                let diff = client.balance + cred;
+                                client.credit = true;
+                                client.balance = diff;
+                                error = { target: "warning", message: "User credits activated!" };
                             }
                             yield client.save();
                         }
@@ -182,7 +178,7 @@ let SaleResolver = class SaleResolver {
                     error: { target: "general", message: err.message },
                 };
             }
-            return { status: true };
+            return { status: true, error: error };
         });
     }
     editSale(id, args) {
@@ -225,7 +221,7 @@ let SaleResolver = class SaleResolver {
                     },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const client = yield User_1.User.findOne(sale.clientId);
                     if (!client)
                         throw new Error("Client does not exist!");
@@ -362,7 +358,7 @@ let SaleResolver = class SaleResolver {
                     },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     if (sale.payed > 0) {
                         const acc = yield Account_1.Account.findOne(sale.accountId);
                         if (!acc)
@@ -403,7 +399,7 @@ let SaleResolver = class SaleResolver {
                         yield client.save();
                     }
                     yield Sale_1.Sale.delete(id);
-                    yield typeorm_1.getConnection()
+                    yield (0, typeorm_1.getConnection)()
                         .createQueryBuilder()
                         .delete()
                         .from(Incentive_1.Incentive)
@@ -437,46 +433,46 @@ let SaleResolver = class SaleResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args", () => SaleInput)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args", () => SaleInput)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [SaleInput, Object]),
     __metadata("design:returntype", Promise)
 ], SaleResolver.prototype, "addSale", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args", () => SaleInput)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args", () => SaleInput)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, SaleInput]),
     __metadata("design:returntype", Promise)
 ], SaleResolver.prototype, "editSale", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], SaleResolver.prototype, "deleteSale", null);
 __decorate([
-    type_graphql_1.Query(() => [Sale_1.Sale]),
+    (0, type_graphql_1.Query)(() => [Sale_1.Sale]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], SaleResolver.prototype, "getSales", null);
 __decorate([
-    type_graphql_1.Query(() => Sale_1.Sale, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Sale_1.Sale, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], SaleResolver.prototype, "getSale", null);
 SaleResolver = __decorate([
-    type_graphql_1.Resolver(Sale_1.Sale)
+    (0, type_graphql_1.Resolver)(Sale_1.Sale)
 ], SaleResolver);
 exports.SaleResolver = SaleResolver;
 //# sourceMappingURL=sale.js.map

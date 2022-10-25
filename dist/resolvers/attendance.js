@@ -30,46 +30,46 @@ const typeorm_1 = require("typeorm");
 let AttendanceInput = class AttendanceInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AttendanceInput.prototype, "arrivedAt", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Boolean)
 ], AttendanceInput.prototype, "attended", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], AttendanceInput.prototype, "attendeeId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AttendanceInput.prototype, "comment", void 0);
 AttendanceInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], AttendanceInput);
 let AttendanceInputEdit = class AttendanceInputEdit {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AttendanceInputEdit.prototype, "arrivedAt", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Boolean)
 ], AttendanceInputEdit.prototype, "attended", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AttendanceInputEdit.prototype, "comment", void 0);
 AttendanceInputEdit = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], AttendanceInputEdit);
 let AttendanceResolver = class AttendanceResolver {
     addAttendance(attendees, { req }) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     attendees.forEach((attendee) => __awaiter(this, void 0, void 0, function* () {
                         yield Attendance_1.Attendance.create(Object.assign(Object.assign({}, attendee), { creatorId: req.session.userId })).save();
                     }));
@@ -116,7 +116,7 @@ let AttendanceResolver = class AttendanceResolver {
             let reqRes;
             if (branch)
                 reqRes = yield Attendance_1.Attendance.find({
-                    where: { arrivedAt: typeorm_1.Between(start, end) },
+                    where: { arrivedAt: (0, typeorm_1.Between)(start, end) },
                     order: { arrivedAt: "ASC" },
                     relations: ["attendee"],
                 });
@@ -130,7 +130,7 @@ let AttendanceResolver = class AttendanceResolver {
             const att = yield Attendance_1.Attendance.find({
                 where: {
                     attendeeId: id,
-                    arrivedAt: typeorm_1.Between(start, end),
+                    arrivedAt: (0, typeorm_1.Between)(start, end),
                 },
                 relations: ["attendee", "creator"],
                 order: {
@@ -142,45 +142,45 @@ let AttendanceResolver = class AttendanceResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("attendees", () => [AttendanceInput])),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("attendees", () => [AttendanceInput])),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Array, Object]),
     __metadata("design:returntype", Promise)
 ], AttendanceResolver.prototype, "addAttendance", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args", () => AttendanceInputEdit)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args", () => AttendanceInputEdit)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, AttendanceInputEdit]),
     __metadata("design:returntype", Promise)
 ], AttendanceResolver.prototype, "editAttendance", null);
 __decorate([
-    type_graphql_1.Query(() => [Attendance_1.Attendance]),
-    __param(0, type_graphql_1.Arg("branch")),
-    __param(1, type_graphql_1.Arg("start")),
-    __param(2, type_graphql_1.Arg("end")),
+    (0, type_graphql_1.Query)(() => [Attendance_1.Attendance]),
+    __param(0, (0, type_graphql_1.Arg)("branch")),
+    __param(1, (0, type_graphql_1.Arg)("start")),
+    __param(2, (0, type_graphql_1.Arg)("end")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Date,
         Date]),
     __metadata("design:returntype", Promise)
 ], AttendanceResolver.prototype, "getAttendances", null);
 __decorate([
-    type_graphql_1.Query(() => [Attendance_1.Attendance]),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("start")),
-    __param(2, type_graphql_1.Arg("end")),
+    (0, type_graphql_1.Query)(() => [Attendance_1.Attendance]),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("start")),
+    __param(2, (0, type_graphql_1.Arg)("end")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Date,
         Date]),
     __metadata("design:returntype", Promise)
 ], AttendanceResolver.prototype, "getAttendance", null);
 AttendanceResolver = __decorate([
-    type_graphql_1.Resolver(Attendance_1.Attendance)
+    (0, type_graphql_1.Resolver)(Attendance_1.Attendance)
 ], AttendanceResolver);
 exports.AttendanceResolver = AttendanceResolver;
 //# sourceMappingURL=attendance.js.map

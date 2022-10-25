@@ -25,93 +25,93 @@ let Product = class Product extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Product.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Product.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Product.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Product.prototype, "creatorId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.createdProducts),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.createdProducts),
     __metadata("design:type", User_1.User)
 ], Product.prototype, "creator", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Product.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Product.prototype, "unit", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Product.prototype, "pieceUnit", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Product.prototype, "pieces", void 0);
 __decorate([
-    type_graphql_1.Field(() => [Purchase_1.Purchase]),
-    typeorm_1.OneToMany(() => Purchase_1.Purchase, (purchase) => purchase.product),
+    (0, type_graphql_1.Field)(() => [Purchase_1.Purchase]),
+    (0, typeorm_1.OneToMany)(() => Purchase_1.Purchase, (purchase) => purchase.product),
     __metadata("design:type", Array)
 ], Product.prototype, "purchases", void 0);
 __decorate([
-    type_graphql_1.Field(() => [IncentiveSheet_1.IncentiveSheet]),
-    typeorm_1.OneToMany(() => IncentiveSheet_1.IncentiveSheet, (IS) => IS.product),
+    (0, type_graphql_1.Field)(() => [IncentiveSheet_1.IncentiveSheet]),
+    (0, typeorm_1.OneToMany)(() => IncentiveSheet_1.IncentiveSheet, (IS) => IS.product),
     __metadata("design:type", Array)
 ], Product.prototype, "incentiveSheets", void 0);
 __decorate([
-    type_graphql_1.Field(() => [Incentive_1.Incentive]),
-    typeorm_1.OneToMany(() => Incentive_1.Incentive, (IS) => IS.product),
+    (0, type_graphql_1.Field)(() => [Incentive_1.Incentive]),
+    (0, typeorm_1.OneToMany)(() => Incentive_1.Incentive, (IS) => IS.product),
     __metadata("design:type", Array)
 ], Product.prototype, "incentives", void 0);
 __decorate([
-    type_graphql_1.Field(() => [Sale_1.Sale]),
-    typeorm_1.OneToMany(() => Sale_1.Sale, (sale) => sale.product),
+    (0, type_graphql_1.Field)(() => [Sale_1.Sale]),
+    (0, typeorm_1.OneToMany)(() => Sale_1.Sale, (sale) => sale.product),
     __metadata("design:type", Array)
 ], Product.prototype, "sold", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int", default: 0 }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int", default: 0 }),
     __metadata("design:type", Number)
 ], Product.prototype, "stock", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int", default: 0 }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int", default: 0 }),
     __metadata("design:type", Number)
 ], Product.prototype, "pieceStock", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint", default: 0 }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint", default: 0 }),
     __metadata("design:type", Number)
 ], Product.prototype, "sellingPrice", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int", default: 0 }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int", default: 0 }),
     __metadata("design:type", Number)
 ], Product.prototype, "pieceSellingPrice", void 0);
 Product = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Product);
 exports.Product = Product;
 //# sourceMappingURL=Product.js.map
