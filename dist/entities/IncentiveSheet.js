@@ -22,78 +22,78 @@ let IncentiveSheet = class IncentiveSheet extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], IncentiveSheet.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], IncentiveSheet.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], IncentiveSheet.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], IncentiveSheet.prototype, "creatorId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.createdIncentiveSheets),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.createdIncentiveSheets),
     __metadata("design:type", User_1.User)
 ], IncentiveSheet.prototype, "creator", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.Column({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.Column)({ type: "timestamp" }),
     __metadata("design:type", Date)
 ], IncentiveSheet.prototype, "startDate", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.Column({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.Column)({ type: "timestamp" }),
     __metadata("design:type", Date)
 ], IncentiveSheet.prototype, "endDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "text" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "text" }),
     __metadata("design:type", String)
 ], IncentiveSheet.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "text" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "text" }),
     __metadata("design:type", String)
 ], IncentiveSheet.prototype, "state", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint" }),
     __metadata("design:type", Number)
 ], IncentiveSheet.prototype, "sheetNo", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], IncentiveSheet.prototype, "productId", void 0);
 __decorate([
-    type_graphql_1.Field(() => Product_1.Product),
-    typeorm_1.ManyToOne(() => Product_1.Product, (prod) => prod.incentiveSheets),
+    (0, type_graphql_1.Field)(() => Product_1.Product),
+    (0, typeorm_1.ManyToOne)(() => Product_1.Product, (prod) => prod.incentiveSheets),
     __metadata("design:type", Product_1.Product)
 ], IncentiveSheet.prototype, "product", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint" }),
     __metadata("design:type", Number)
 ], IncentiveSheet.prototype, "incentivePrice", void 0);
 __decorate([
-    type_graphql_1.Field(() => [User_1.User]),
-    typeorm_1.ManyToMany(() => User_1.User, (user) => user.sheet),
+    (0, type_graphql_1.Field)(() => [User_1.User]),
+    (0, typeorm_1.ManyToMany)(() => User_1.User, (user) => user.sheet),
     __metadata("design:type", Array)
 ], IncentiveSheet.prototype, "users", void 0);
 IncentiveSheet = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], IncentiveSheet);
 exports.IncentiveSheet = IncentiveSheet;
 //# sourceMappingURL=IncentiveSheet.js.map

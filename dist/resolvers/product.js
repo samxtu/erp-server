@@ -29,24 +29,53 @@ const branch_1 = require("./branch");
 let ProductInput = class ProductInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], ProductInput.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], ProductInput.prototype, "unit", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], ProductInput.prototype, "pieces", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], ProductInput.prototype, "pieceUnit", void 0);
 ProductInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], ProductInput);
+let ProductEditInput = class ProductEditInput {
+};
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], ProductEditInput.prototype, "name", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], ProductEditInput.prototype, "unit", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], ProductEditInput.prototype, "pieces", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], ProductEditInput.prototype, "pieceUnit", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], ProductEditInput.prototype, "sellingPrice", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], ProductEditInput.prototype, "pieceSellingPrice", void 0);
+ProductEditInput = __decorate([
+    (0, type_graphql_1.InputType)()
+], ProductEditInput);
 let ProductResolver = class ProductResolver {
     addProduct(args, { req }) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -120,46 +149,46 @@ let ProductResolver = class ProductResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args")),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args")),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [ProductInput, Object]),
     __metadata("design:returntype", Promise)
 ], ProductResolver.prototype, "addProduct", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, ProductInput]),
+    __metadata("design:paramtypes", [Number, ProductEditInput]),
     __metadata("design:returntype", Promise)
 ], ProductResolver.prototype, "editProduct", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ProductResolver.prototype, "deleteProduct", null);
 __decorate([
-    type_graphql_1.Query(() => [Product_1.Product]),
+    (0, type_graphql_1.Query)(() => [Product_1.Product]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ProductResolver.prototype, "getProducts", null);
 __decorate([
-    type_graphql_1.Query(() => Product_1.Product, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Product_1.Product, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ProductResolver.prototype, "getProduct", null);
 ProductResolver = __decorate([
-    type_graphql_1.Resolver(Product_1.Product)
+    (0, type_graphql_1.Resolver)(Product_1.Product)
 ], ProductResolver);
 exports.ProductResolver = ProductResolver;
 //# sourceMappingURL=product.js.map

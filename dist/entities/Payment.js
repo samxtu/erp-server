@@ -22,78 +22,78 @@ let Payment = class Payment extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Payment.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Payment.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Payment.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.Column({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.Column)({ type: "timestamp" }),
     __metadata("design:type", Date)
 ], Payment.prototype, "paymentDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Payment.prototype, "payerId", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Payment.prototype, "collectorId", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "text" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "text" }),
     __metadata("design:type", String)
 ], Payment.prototype, "details", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint" }),
     __metadata("design:type", Number)
 ], Payment.prototype, "ammount", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Payment.prototype, "creatorId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.createdPayments),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.createdPayments),
     __metadata("design:type", User_1.User)
 ], Payment.prototype, "creator", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.payments),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.payments),
     __metadata("design:type", User_1.User)
 ], Payment.prototype, "payer", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.collections),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.collections),
     __metadata("design:type", User_1.User)
 ], Payment.prototype, "collector", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Payment.prototype, "accountId", void 0);
 __decorate([
-    type_graphql_1.Field(() => Account_1.Account),
-    typeorm_1.ManyToOne(() => Account_1.Account, (account) => account.payments),
+    (0, type_graphql_1.Field)(() => Account_1.Account),
+    (0, typeorm_1.ManyToOne)(() => Account_1.Account, (account) => account.payments),
     __metadata("design:type", Account_1.Account)
 ], Payment.prototype, "account", void 0);
 Payment = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Payment);
 exports.Payment = Payment;
 //# sourceMappingURL=Payment.js.map

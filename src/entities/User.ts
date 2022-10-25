@@ -71,16 +71,16 @@ export class User extends BaseEntity {
   credit: boolean;
 
   @Field()
+  @Column({ default: true })
+  status: boolean;
+
+  @Field()
   @Column({ type: "bigint", default: 0 })
   balance: number;
 
   @Field()
   @Column({ type: "bigint", default: 0 })
   salary: number;
-
-  @Field()
-  @Column({ type: "boolean", default: true })
-  employee: boolean;
 
   @Field()
   @Column({ type: "int" })

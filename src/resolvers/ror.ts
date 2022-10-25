@@ -85,7 +85,7 @@ export class RORResolver {
   }
 
   @Query(() => [ROR])
-  getRORs(@Arg("id") id: number): Promise<ROR[]> {
-    return ROR.find({ where: { creatorId: id } });
+  getRORs(@Ctx() { req }: MyContext): Promise<ROR[]> {
+    return ROR.find({ where: { creatorId: req.session.userId } });
   }
 }

@@ -21,33 +21,33 @@ let Role = class Role extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Role.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Role.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Role.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => [User_1.User]),
-    typeorm_1.OneToMany(() => User_1.User, (user) => user.role),
+    (0, type_graphql_1.Field)(() => [User_1.User]),
+    (0, typeorm_1.OneToMany)(() => User_1.User, (user) => user.role),
     __metadata("design:type", Array)
 ], Role.prototype, "users", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Role.prototype, "name", void 0);
 Role = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Role);
 exports.Role = Role;
 //# sourceMappingURL=Role.js.map

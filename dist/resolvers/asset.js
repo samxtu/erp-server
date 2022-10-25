@@ -29,27 +29,27 @@ const branch_1 = require("./branch");
 let AssetInput = class AssetInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AssetInput.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AssetInput.prototype, "code", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AssetInput.prototype, "condition", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AssetInput.prototype, "details", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], AssetInput.prototype, "branchId", void 0);
 AssetInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], AssetInput);
 let AssetResolver = class AssetResolver {
     addAsset(args, { req }) {
@@ -155,56 +155,56 @@ let AssetResolver = class AssetResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args")),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args")),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [AssetInput, Object]),
     __metadata("design:returntype", Promise)
 ], AssetResolver.prototype, "addAsset", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, AssetInput]),
     __metadata("design:returntype", Promise)
 ], AssetResolver.prototype, "editAsset", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("condition", () => String)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("condition", () => String)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", Promise)
 ], AssetResolver.prototype, "changeCondition", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AssetResolver.prototype, "deleteAsset", null);
 __decorate([
-    type_graphql_1.Query(() => [Asset_1.Asset]),
-    __param(0, type_graphql_1.Arg("branch", { nullable: true })),
+    (0, type_graphql_1.Query)(() => [Asset_1.Asset]),
+    __param(0, (0, type_graphql_1.Arg)("branch", { nullable: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AssetResolver.prototype, "getAssets", null);
 __decorate([
-    type_graphql_1.Query(() => Asset_1.Asset, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Asset_1.Asset, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AssetResolver.prototype, "getAsset", null);
 AssetResolver = __decorate([
-    type_graphql_1.Resolver(Asset_1.Asset)
+    (0, type_graphql_1.Resolver)(Asset_1.Asset)
 ], AssetResolver);
 exports.AssetResolver = AssetResolver;
 //# sourceMappingURL=asset.js.map

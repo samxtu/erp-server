@@ -87,38 +87,38 @@ let RegionsResolver = class RegionsResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    __param(0, type_graphql_1.Arg("name", () => String)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    __param(0, (0, type_graphql_1.Arg)("name", () => String)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], RegionsResolver.prototype, "addRegion", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("name", () => String)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("name", () => String)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", Promise)
 ], RegionsResolver.prototype, "editRegion", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], RegionsResolver.prototype, "deleteRegion", null);
 __decorate([
-    type_graphql_1.Query(() => [Region_1.Region]),
+    (0, type_graphql_1.Query)(() => [Region_1.Region]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], RegionsResolver.prototype, "getRegions", null);
 RegionsResolver = __decorate([
-    type_graphql_1.Resolver(Region_1.Region)
+    (0, type_graphql_1.Resolver)(Region_1.Region)
 ], RegionsResolver);
 exports.RegionsResolver = RegionsResolver;
 //# sourceMappingURL=region.js.map

@@ -24,63 +24,63 @@ let Branch = class Branch extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Branch.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Branch.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Branch.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Branch.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Branch.prototype, "phone", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Branch.prototype, "regionId", void 0);
 __decorate([
-    type_graphql_1.Field(() => Region_1.Region),
-    typeorm_1.ManyToOne(() => Region_1.Region, (region) => region.branches),
+    (0, type_graphql_1.Field)(() => Region_1.Region),
+    (0, typeorm_1.ManyToOne)(() => Region_1.Region, (region) => region.branches),
     __metadata("design:type", Region_1.Region)
 ], Branch.prototype, "region", void 0);
 __decorate([
-    type_graphql_1.Field(() => [Account_1.Account]),
-    typeorm_1.OneToMany(() => Account_1.Account, (account) => account.branch),
+    (0, type_graphql_1.Field)(() => [Account_1.Account]),
+    (0, typeorm_1.OneToMany)(() => Account_1.Account, (account) => account.branch),
     __metadata("design:type", Array)
 ], Branch.prototype, "accounts", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Branch.prototype, "street", void 0);
 __decorate([
-    type_graphql_1.Field(() => [User_1.User]),
-    typeorm_1.OneToMany(() => User_1.User, (user) => user.branch),
+    (0, type_graphql_1.Field)(() => [User_1.User]),
+    (0, typeorm_1.OneToMany)(() => User_1.User, (user) => user.branch),
     __metadata("design:type", Array)
 ], Branch.prototype, "users", void 0);
 __decorate([
-    type_graphql_1.Field(() => [Asset_1.Asset]),
-    typeorm_1.OneToMany(() => Asset_1.Asset, (asset) => asset.branch),
+    (0, type_graphql_1.Field)(() => [Asset_1.Asset]),
+    (0, typeorm_1.OneToMany)(() => Asset_1.Asset, (asset) => asset.branch),
     __metadata("design:type", Array)
 ], Branch.prototype, "assets", void 0);
 Branch = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Branch);
 exports.Branch = Branch;
 //# sourceMappingURL=Branch.js.map

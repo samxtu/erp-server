@@ -29,23 +29,23 @@ const branch_1 = require("./branch");
 let RORInput = class RORInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], RORInput.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], RORInput.prototype, "buying", void 0);
 __decorate([
-    type_graphql_1.Field({ nullable: true }),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], RORInput.prototype, "pieces", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], RORInput.prototype, "selling", void 0);
 RORInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], RORInput);
 let RORResolver = class RORResolver {
     addROR(args, { req }) {
@@ -99,45 +99,45 @@ let RORResolver = class RORResolver {
             return { status: true };
         });
     }
-    getRORs(id) {
-        return ROR_1.ROR.find({ where: { creatorId: id } });
+    getRORs({ req }) {
+        return ROR_1.ROR.find({ where: { creatorId: req.session.userId } });
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args", () => RORInput)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args", () => RORInput)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [RORInput, Object]),
     __metadata("design:returntype", Promise)
 ], RORResolver.prototype, "addROR", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args", () => RORInput)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args", () => RORInput)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, RORInput]),
     __metadata("design:returntype", Promise)
 ], RORResolver.prototype, "editROR", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], RORResolver.prototype, "deleteROR", null);
 __decorate([
-    type_graphql_1.Query(() => [ROR_1.ROR]),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => [ROR_1.ROR]),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], RORResolver.prototype, "getRORs", null);
 RORResolver = __decorate([
-    type_graphql_1.Resolver(ROR_1.ROR)
+    (0, type_graphql_1.Resolver)(ROR_1.ROR)
 ], RORResolver);
 exports.RORResolver = RORResolver;
 //# sourceMappingURL=ror.js.map

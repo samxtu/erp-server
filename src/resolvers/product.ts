@@ -25,6 +25,22 @@ class ProductInput {
   pieceUnit: string;
 }
 
+@InputType()
+class ProductEditInput {
+  @Field()
+  name: string;
+  @Field()
+  unit: string;
+  @Field()
+  pieces: number;
+  @Field()
+  pieceUnit: string;
+  @Field()
+  sellingPrice: number;
+  @Field()
+  pieceSellingPrice: number;
+}
+
 @Resolver(Product)
 export class ProductResolver {
   @Mutation(() => BooleanResponse)
@@ -49,7 +65,7 @@ export class ProductResolver {
   @UseMiddleware(isAuth)
   async editProduct(
     @Arg("id") id: number,
-    @Arg("args") args: ProductInput
+    @Arg("args") args: ProductEditInput
   ): Promise<BooleanResponse> {
     const product = await Product.findOne(id);
     if (!product)

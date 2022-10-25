@@ -22,6 +22,7 @@ import { sendEmail } from "../utils/sendEmail";
 import { v4 } from "uuid";
 import { isAuth } from "../middleware/isAuth";
 import { BooleanResponse } from "./branch";
+import { getRepository, In } from "typeorm";
 
 @InputType()
 class EmailPasswordArgs {
@@ -47,8 +48,6 @@ class RegisterArgs {
   creditDays: number;
   @Field()
   credit: boolean;
-  @Field()
-  employee: boolean;
   @Field(() => Float)
   balance: number;
   @Field(() => Float)
@@ -59,6 +58,34 @@ class RegisterArgs {
   branchId: number;
   @Field()
   password: string;
+}
+
+@InputType()
+class EditArgs {
+  @Field()
+  name: string;
+  @Field()
+  email: string;
+  @Field()
+  phone: string;
+  @Field()
+  location: string;
+  @Field(() => Float)
+  maxCredit: number;
+  @Field()
+  creditDays: number;
+  @Field()
+  credit: boolean;
+  @Field()
+  status: boolean;
+  @Field(() => Float)
+  balance: number;
+  @Field(() => Float)
+  salary: number;
+  @Field()
+  roleId: number;
+  @Field()
+  branchId: number;
 }
 
 @ObjectType()
@@ -165,6 +192,7 @@ export class UserResolver {
         maxCredit: params.maxCredit,
         creditDays: params.creditDays,
         credit: params.credit,
+        status: true,
         balance: params.balance,
         salary: params.salary,
         roleId: params.roleId,
@@ -181,7 +209,34 @@ export class UserResolver {
             message: "username already taken!",
           },
         };
-      console.error(err.message);
+      console.error("error message: ", err.message);
+      return {
+        status: false,
+        error: {
+          target: "general",
+          message: "Something went wrong, try again!",
+        },
+      };
+    }
+    return { status: true };
+  }
+
+  @Mutation(() => BooleanResponse)
+  async editUser(
+    @Arg("id") id: number,
+    @Arg("params") params: EditArgs
+  ): Promise<BooleanResponse> {
+    const user = await User.findOne(id);
+    if (!user)
+      return {
+        status: false,
+        error: { target: "general", message: "User does not exist!" },
+      };
+
+    try {
+      await User.update({ id }, { ...params });
+    } catch (err) {
+      console.error("error message: ", err.message);
       return {
         status: false,
         error: {
@@ -254,15 +309,12 @@ export class UserResolver {
   @Query(() => [User])
   @UseMiddleware(isAuth)
   async getUsers(
-    @Arg("employee", { nullable: true }) employee: boolean
+    @Arg("roles", () => [Float], { nullable: true }) roles: number[]
   ): Promise<User[]> {
-    let reqRes: User[];
-    if (employee)
-      reqRes = await User.find({
-        where: { employee: employee },
-        relations: ["role", "branch"],
-      });
-    else reqRes = await User.find({ relations: ["role", "branch"] });
+    let reqRes: User[] = [];
+    if ( roles === null || roles === undefined || roles.length === 0 )
+      reqRes = await User.find({ relations: ["role", "branch"] });
+    else reqRes = await User.find({ where: { roleId: In(roles) }, relations: ["role","branch"]});
     return reqRes;
   }
 

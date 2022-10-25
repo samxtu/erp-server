@@ -21,53 +21,53 @@ let ROR = class ROR extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], ROR.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], ROR.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], ROR.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], ROR.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint" }),
     __metadata("design:type", Number)
 ], ROR.prototype, "buying", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint" }),
     __metadata("design:type", Number)
 ], ROR.prototype, "selling", void 0);
 __decorate([
-    type_graphql_1.Field({ nullable: true }),
-    typeorm_1.Column({ type: "bigint", nullable: true }),
+    (0, type_graphql_1.Field)({ nullable: true }),
+    (0, typeorm_1.Column)({ type: "bigint", nullable: true }),
     __metadata("design:type", Number)
 ], ROR.prototype, "pieces", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], ROR.prototype, "creatorId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.RORS),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.RORS),
     __metadata("design:type", User_1.User)
 ], ROR.prototype, "creator", void 0);
 ROR = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], ROR);
 exports.ROR = ROR;
 //# sourceMappingURL=ROR.js.map

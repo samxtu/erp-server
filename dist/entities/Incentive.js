@@ -23,63 +23,63 @@ let Incentive = class Incentive extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Incentive.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Incentive.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Incentive.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Incentive.prototype, "staffId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.incentives),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.incentives),
     __metadata("design:type", User_1.User)
 ], Incentive.prototype, "staff", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Incentive.prototype, "productId", void 0);
 __decorate([
-    type_graphql_1.Field(() => Product_1.Product),
-    typeorm_1.ManyToOne(() => Product_1.Product, (prod) => prod.incentives),
+    (0, type_graphql_1.Field)(() => Product_1.Product),
+    (0, typeorm_1.ManyToOne)(() => Product_1.Product, (prod) => prod.incentives),
     __metadata("design:type", Product_1.Product)
 ], Incentive.prototype, "product", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Incentive.prototype, "saleId", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Incentive.prototype, "quantity", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint" }),
     __metadata("design:type", Number)
 ], Incentive.prototype, "incentivePrice", void 0);
 __decorate([
-    type_graphql_1.Field(() => Sale_1.Sale),
-    typeorm_1.OneToOne(() => Sale_1.Sale, (sale) => sale.incentive),
+    (0, type_graphql_1.Field)(() => Sale_1.Sale),
+    (0, typeorm_1.OneToOne)(() => Sale_1.Sale, (sale) => sale.incentive),
     __metadata("design:type", Sale_1.Sale)
 ], Incentive.prototype, "sale", void 0);
 Incentive = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Incentive);
 exports.Incentive = Incentive;
 //# sourceMappingURL=Incentive.js.map

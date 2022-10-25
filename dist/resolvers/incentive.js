@@ -32,44 +32,44 @@ const branch_1 = require("./branch");
 let IncentiveInput = class IncentiveInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], IncentiveInput.prototype, "productId", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], IncentiveInput.prototype, "incentivePrice", void 0);
 IncentiveInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], IncentiveInput);
 let SheetInput = class SheetInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], SheetInput.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], SheetInput.prototype, "state", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Date)
 ], SheetInput.prototype, "startDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Date)
 ], SheetInput.prototype, "endDate", void 0);
 __decorate([
-    type_graphql_1.Field(() => [type_graphql_1.Int]),
+    (0, type_graphql_1.Field)(() => [type_graphql_1.Int]),
     __metadata("design:type", Array)
 ], SheetInput.prototype, "staff", void 0);
 __decorate([
-    type_graphql_1.Field(() => [IncentiveInput]),
+    (0, type_graphql_1.Field)(() => [IncentiveInput]),
     __metadata("design:type", Array)
 ], SheetInput.prototype, "productsIncentives", void 0);
 SheetInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], SheetInput);
 let IncentiveResolver = class IncentiveResolver {
     addSheet(args, { req }) {
@@ -77,7 +77,7 @@ let IncentiveResolver = class IncentiveResolver {
             const { name, startDate, endDate, state, staff, productsIncentives } = args;
             const sheetNo = new Date().getTime();
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const users = yield User_1.User.findByIds(staff);
                     users.forEach((u) => __awaiter(this, void 0, void 0, function* () {
                         u.sheetId = sheetNo;
@@ -107,7 +107,7 @@ let IncentiveResolver = class IncentiveResolver {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, startDate, state, endDate, staff, productsIncentives } = args;
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const users = yield User_1.User.findByIds(staff);
                     users.forEach((u) => __awaiter(this, void 0, void 0, function* () {
                         u.sheetId = sheetNo;
@@ -142,11 +142,11 @@ let IncentiveResolver = class IncentiveResolver {
     deleteSheet(sheetNo) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const users = yield User_1.User.find({ where: { sheetId: sheetNo } });
                     if (users.length > 0)
                         throw new Error("Sheet actively used by staff!");
-                    yield typeorm_1.getConnection()
+                    yield (0, typeorm_1.getConnection)()
                         .createQueryBuilder()
                         .delete()
                         .from(IncentiveSheet_1.IncentiveSheet)
@@ -171,14 +171,14 @@ let IncentiveResolver = class IncentiveResolver {
                 reqRes = yield Incentive_1.Incentive.find({
                     where: {
                         staffId: staff,
-                        createdAt: typeorm_1.Between(start, end),
+                        createdAt: (0, typeorm_1.Between)(start, end),
                     },
                     relations: ["staff", "product", "sale"],
                 });
             else
                 reqRes = yield Incentive_1.Incentive.find({
                     where: {
-                        createdAt: typeorm_1.Between(start, end),
+                        createdAt: (0, typeorm_1.Between)(start, end),
                     },
                     order: { staffId: "ASC" },
                     relations: ["staff", "product", "sale"],
@@ -197,56 +197,56 @@ let IncentiveResolver = class IncentiveResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args")),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args")),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [SheetInput, Object]),
     __metadata("design:returntype", Promise)
 ], IncentiveResolver.prototype, "addSheet", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("sheetNo")),
-    __param(1, type_graphql_1.Arg("args")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("sheetNo")),
+    __param(1, (0, type_graphql_1.Arg)("args")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, SheetInput]),
     __metadata("design:returntype", Promise)
 ], IncentiveResolver.prototype, "editSheet", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("sheetNo")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("sheetNo")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], IncentiveResolver.prototype, "deleteSheet", null);
 __decorate([
-    type_graphql_1.Query(() => [Incentive_1.Incentive]),
-    __param(0, type_graphql_1.Arg("start")),
-    __param(1, type_graphql_1.Arg("end")),
-    __param(2, type_graphql_1.Arg("staff")),
+    (0, type_graphql_1.Query)(() => [Incentive_1.Incentive]),
+    __param(0, (0, type_graphql_1.Arg)("start")),
+    __param(1, (0, type_graphql_1.Arg)("end")),
+    __param(2, (0, type_graphql_1.Arg)("staff")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Date,
         Date, Number]),
     __metadata("design:returntype", Promise)
 ], IncentiveResolver.prototype, "getIncentives", null);
 __decorate([
-    type_graphql_1.Query(() => [IncentiveSheet_1.IncentiveSheet]),
+    (0, type_graphql_1.Query)(() => [IncentiveSheet_1.IncentiveSheet]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], IncentiveResolver.prototype, "getIncentiveSheets", null);
 __decorate([
-    type_graphql_1.Query(() => IncentiveSheet_1.IncentiveSheet, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => IncentiveSheet_1.IncentiveSheet, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], IncentiveResolver.prototype, "getIncentiveSheet", null);
 IncentiveResolver = __decorate([
-    type_graphql_1.Resolver(IncentiveSheet_1.IncentiveSheet)
+    (0, type_graphql_1.Resolver)(IncentiveSheet_1.IncentiveSheet)
 ], IncentiveResolver);
 exports.IncentiveResolver = IncentiveResolver;
 //# sourceMappingURL=incentive.js.map

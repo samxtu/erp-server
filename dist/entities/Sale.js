@@ -24,108 +24,108 @@ let Sale = class Sale extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Sale.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Sale.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Sale.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.Column({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.Column)({ type: "timestamp" }),
     __metadata("design:type", Date)
 ], Sale.prototype, "saleDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Sale.prototype, "clientId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.servedSales),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.servedSales),
     __metadata("design:type", User_1.User)
 ], Sale.prototype, "client", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Sale.prototype, "productId", void 0);
 __decorate([
-    type_graphql_1.Field(() => Product_1.Product),
-    typeorm_1.ManyToOne(() => Product_1.Product, (product) => product.sold),
+    (0, type_graphql_1.Field)(() => Product_1.Product),
+    (0, typeorm_1.ManyToOne)(() => Product_1.Product, (product) => product.sold),
     __metadata("design:type", Product_1.Product)
 ], Sale.prototype, "product", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int", default: 0 }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int", default: 0 }),
     __metadata("design:type", Number)
 ], Sale.prototype, "quantity", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int", default: 0 }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int", default: 0 }),
     __metadata("design:type", Number)
 ], Sale.prototype, "pieceQuantity", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint", default: 0 }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint", default: 0 }),
     __metadata("design:type", Number)
 ], Sale.prototype, "sellingPrice", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint", default: 0 }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint", default: 0 }),
     __metadata("design:type", Number)
 ], Sale.prototype, "pieceSellingPrice", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Sale.prototype, "creatorId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.createdSales),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.createdSales),
     __metadata("design:type", User_1.User)
 ], Sale.prototype, "creator", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Sale.prototype, "sellerId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.initiatedSales),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.initiatedSales),
     __metadata("design:type", User_1.User)
 ], Sale.prototype, "seller", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Sale.prototype, "accountId", void 0);
 __decorate([
-    type_graphql_1.Field(() => Account_1.Account),
-    typeorm_1.ManyToOne(() => Account_1.Account, (acc) => acc.sales),
+    (0, type_graphql_1.Field)(() => Account_1.Account),
+    (0, typeorm_1.ManyToOne)(() => Account_1.Account, (acc) => acc.sales),
     __metadata("design:type", Account_1.Account)
 ], Sale.prototype, "account", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint" }),
     __metadata("design:type", Number)
 ], Sale.prototype, "payed", void 0);
 __decorate([
-    type_graphql_1.Field(() => Incentive_1.Incentive),
-    typeorm_1.OneToOne(() => Incentive_1.Incentive, (inc) => inc.sale),
+    (0, type_graphql_1.Field)(() => Incentive_1.Incentive),
+    (0, typeorm_1.OneToOne)(() => Incentive_1.Incentive, (inc) => inc.sale),
     __metadata("design:type", Incentive_1.Incentive)
 ], Sale.prototype, "incentive", void 0);
 Sale = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Sale);
 exports.Sale = Sale;
 //# sourceMappingURL=Sale.js.map

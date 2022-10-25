@@ -32,43 +32,43 @@ const Product_1 = require("../entities/Product");
 let PurchaseInput = class PurchaseInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], PurchaseInput.prototype, "purchaseDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], PurchaseInput.prototype, "supplierId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], PurchaseInput.prototype, "productId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], PurchaseInput.prototype, "quantity", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], PurchaseInput.prototype, "purchasePrice", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], PurchaseInput.prototype, "sellingPrice", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], PurchaseInput.prototype, "pieceSellingPrice", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], PurchaseInput.prototype, "receipt", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], PurchaseInput.prototype, "accountId", void 0);
 PurchaseInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], PurchaseInput);
 let PurchaseResolver = class PurchaseResolver {
     addPurchase(args, { req }) {
@@ -84,7 +84,7 @@ let PurchaseResolver = class PurchaseResolver {
                     },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const acc = yield Account_1.Account.findOne(args.accountId);
                     if (!acc)
                         throw new Error("Account does not exist!");
@@ -129,7 +129,7 @@ let PurchaseResolver = class PurchaseResolver {
                     error: { target: "general", message: "Purchase does not exist!" },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const acc = yield Account_1.Account.findOne(args.accountId);
                     if (!acc)
                         throw new Error("Account does not exist!");
@@ -207,7 +207,7 @@ let PurchaseResolver = class PurchaseResolver {
                 oldPieceSellingPrice = prod.pieceSellingPrice;
             }
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     acc.balance = acc.balance + purchase.purchasePrice * purchase.quantity;
                     yield acc.save();
                     prod.stock = prod.stock - purchase.quantity;
@@ -243,46 +243,46 @@ let PurchaseResolver = class PurchaseResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args", () => PurchaseInput)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args", () => PurchaseInput)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PurchaseInput, Object]),
     __metadata("design:returntype", Promise)
 ], PurchaseResolver.prototype, "addPurchase", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args", () => PurchaseInput)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args", () => PurchaseInput)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, PurchaseInput]),
     __metadata("design:returntype", Promise)
 ], PurchaseResolver.prototype, "editPurchase", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], PurchaseResolver.prototype, "deletePurchase", null);
 __decorate([
-    type_graphql_1.Query(() => [Purchase_1.Purchase]),
+    (0, type_graphql_1.Query)(() => [Purchase_1.Purchase]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], PurchaseResolver.prototype, "getPurchases", null);
 __decorate([
-    type_graphql_1.Query(() => Purchase_1.Purchase, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Purchase_1.Purchase, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], PurchaseResolver.prototype, "getPurchase", null);
 PurchaseResolver = __decorate([
-    type_graphql_1.Resolver(Purchase_1.Purchase)
+    (0, type_graphql_1.Resolver)(Purchase_1.Purchase)
 ], PurchaseResolver);
 exports.PurchaseResolver = PurchaseResolver;
 //# sourceMappingURL=purchase.js.map

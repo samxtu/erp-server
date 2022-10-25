@@ -23,98 +23,98 @@ let Expense = class Expense extends typeorm_1.BaseEntity {
     }
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Expense.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.CreateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Expense.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.UpdateDateColumn({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Object)
 ], Expense.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.Column({ type: "timestamp" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.Column)({ type: "timestamp" }),
     __metadata("design:type", Date)
 ], Expense.prototype, "expenseDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Expense.prototype, "authorizerId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.authorizedExpenses),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.authorizedExpenses),
     __metadata("design:type", User_1.User)
 ], Expense.prototype, "authorizer", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Expense.prototype, "staffId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.receivedExpenses),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.receivedExpenses),
     __metadata("design:type", User_1.User)
 ], Expense.prototype, "staff", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
 ], Expense.prototype, "assetId", void 0);
 __decorate([
-    type_graphql_1.Field(() => Asset_1.Asset),
-    typeorm_1.ManyToOne(() => Asset_1.Asset, (asset) => asset.receivedExpenses),
+    (0, type_graphql_1.Field)(() => Asset_1.Asset),
+    (0, typeorm_1.ManyToOne)(() => Asset_1.Asset, (asset) => asset.receivedExpenses),
     __metadata("design:type", Asset_1.Asset)
 ], Expense.prototype, "asset", void 0);
 __decorate([
-    type_graphql_1.Field(() => String),
-    typeorm_1.Column({ type: "text" }),
+    (0, type_graphql_1.Field)(() => String),
+    (0, typeorm_1.Column)({ type: "text" }),
     __metadata("design:type", String)
 ], Expense.prototype, "type", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "text" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "text" }),
     __metadata("design:type", String)
 ], Expense.prototype, "title", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "text" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "text" }),
     __metadata("design:type", String)
 ], Expense.prototype, "details", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "bigint" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "bigint" }),
     __metadata("design:type", Number)
 ], Expense.prototype, "ammount", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Expense.prototype, "creatorId", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.createdExpenses),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.createdExpenses),
     __metadata("design:type", User_1.User)
 ], Expense.prototype, "creator", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ type: "int" }),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ type: "int" }),
     __metadata("design:type", Number)
 ], Expense.prototype, "accountId", void 0);
 __decorate([
-    type_graphql_1.Field(() => Account_1.Account),
-    typeorm_1.ManyToOne(() => Account_1.Account, (account) => account.expenses),
+    (0, type_graphql_1.Field)(() => Account_1.Account),
+    (0, typeorm_1.ManyToOne)(() => Account_1.Account, (account) => account.expenses),
     __metadata("design:type", Account_1.Account)
 ], Expense.prototype, "account", void 0);
 Expense = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Expense);
 exports.Expense = Expense;
 //# sourceMappingURL=Expense.js.map

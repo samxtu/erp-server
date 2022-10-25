@@ -20,7 +20,7 @@ const apollo_server_express_1 = require("apollo-server-express");
 const type_graphql_1 = require("type-graphql");
 const User_1 = require("./resolvers/User");
 const ioredis_1 = __importDefault(require("ioredis"));
-const express_session_1 = __importDefault(require("express-session"));
+const session = require("express-session");
 const connect_redis_1 = __importDefault(require("connect-redis"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
@@ -38,8 +38,9 @@ const role_1 = require("./resolvers/role");
 const ror_1 = require("./resolvers/ror");
 const sale_1 = require("./resolvers/sale");
 const region_1 = require("./resolvers/region");
+const uploadFile_1 = require("./resolvers/uploadFile");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    const conn = yield typeorm_1.createConnection({
+    const conn = yield (0, typeorm_1.createConnection)({
         type: constants_1.DB_TYPE,
         database: constants_1.DB_NAME,
         username: constants_1.DB_USER,
@@ -53,10 +54,10 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         },
     });
     console.log("Connected to db: ", conn.isConnected);
-    const app = express_1.default();
-    const RedisStore = connect_redis_1.default(express_session_1.default);
+    const app = (0, express_1.default)();
+    const RedisStore = (0, connect_redis_1.default)(session);
     const redis = new ioredis_1.default();
-    app.use(express_session_1.default({
+    app.use(session({
         name: constants_1.COOKIE_NAME,
         store: new RedisStore({
             client: redis,
@@ -70,14 +71,14 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         },
         secret: constants_1.customSecret,
         resave: false,
-        saveUninitialized: false,
+        saveUninitialized: true,
     }));
-    app.use(cors_1.default({
+    app.use((0, cors_1.default)({
         origin: constants_1.FRONT_END_ORIGIN,
         credentials: true,
     }));
     const apolloServer = new apollo_server_express_1.ApolloServer({
-        schema: yield type_graphql_1.buildSchema({
+        schema: yield (0, type_graphql_1.buildSchema)({
             resolvers: [
                 User_1.UserResolver,
                 account_1.AccountResolver,
@@ -94,10 +95,11 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
                 role_1.RoleResolver,
                 ror_1.RORResolver,
                 sale_1.SaleResolver,
+                uploadFile_1.FileResolver
             ],
             validate: false,
         }),
-        context: ({ req, res }) => ({ req, res, redis }),
+        context: ({ req, res }) => ({ req, res, redis, conn }),
     });
     apolloServer.applyMiddleware({ app, cors: false });
     app.listen(4000, () => {

@@ -31,43 +31,43 @@ const Account_1 = require("../entities/Account");
 let ExpenseInput = class ExpenseInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], ExpenseInput.prototype, "expenseDate", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], ExpenseInput.prototype, "title", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], ExpenseInput.prototype, "details", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], ExpenseInput.prototype, "authorizerId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], ExpenseInput.prototype, "staffId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], ExpenseInput.prototype, "assetId", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], ExpenseInput.prototype, "ammount", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], ExpenseInput.prototype, "accountId", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], ExpenseInput.prototype, "type", void 0);
 ExpenseInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], ExpenseInput);
 let ExpenseResolver = class ExpenseResolver {
     addExpense(args, { req }) {
@@ -81,7 +81,7 @@ let ExpenseResolver = class ExpenseResolver {
                     },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     const acc = yield Account_1.Account.findOne(args.accountId);
                     if (!acc)
                         throw new Error("Account does not exist!");
@@ -117,7 +117,7 @@ let ExpenseResolver = class ExpenseResolver {
                     error: { target: "general", message: "Expense does not exist!" },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     if (xpense.ammount !== args.ammount) {
                         const acc = yield Account_1.Account.findOne(args.accountId);
                         if (!acc)
@@ -156,7 +156,7 @@ let ExpenseResolver = class ExpenseResolver {
                     },
                 };
             try {
-                typeorm_1.getConnection().transaction(() => __awaiter(this, void 0, void 0, function* () {
+                (0, typeorm_1.getConnection)().transaction(() => __awaiter(this, void 0, void 0, function* () {
                     acc.balance = acc.balance + xpense.ammount;
                     acc.save();
                     yield Expense_1.Expense.delete(xpense.id);
@@ -175,7 +175,7 @@ let ExpenseResolver = class ExpenseResolver {
     getExpenses() {
         return __awaiter(this, void 0, void 0, function* () {
             let reqRes = yield Expense_1.Expense.find({
-                relations: ["authorizer", "staff", "asset", "account"],
+                relations: ["authorizer", "staff", "account"],
                 order: { expenseDate: "DESC" },
             });
             return reqRes;
@@ -188,46 +188,46 @@ let ExpenseResolver = class ExpenseResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args", () => ExpenseInput)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args", () => ExpenseInput)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [ExpenseInput, Object]),
     __metadata("design:returntype", Promise)
 ], ExpenseResolver.prototype, "addExpense", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args", () => ExpenseInput)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args", () => ExpenseInput)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, ExpenseInput]),
     __metadata("design:returntype", Promise)
 ], ExpenseResolver.prototype, "editExpense", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ExpenseResolver.prototype, "deleteExpense", null);
 __decorate([
-    type_graphql_1.Query(() => [Expense_1.Expense]),
+    (0, type_graphql_1.Query)(() => [Expense_1.Expense]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ExpenseResolver.prototype, "getExpenses", null);
 __decorate([
-    type_graphql_1.Query(() => Expense_1.Expense, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Expense_1.Expense, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ExpenseResolver.prototype, "getExpense", null);
 ExpenseResolver = __decorate([
-    type_graphql_1.Resolver(Expense_1.Expense)
+    (0, type_graphql_1.Resolver)(Expense_1.Expense)
 ], ExpenseResolver);
 exports.ExpenseResolver = ExpenseResolver;
 //# sourceMappingURL=expense.js.map

@@ -29,23 +29,23 @@ const branch_1 = require("./branch");
 let AccountInput = class AccountInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AccountInput.prototype, "name", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], AccountInput.prototype, "number", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], AccountInput.prototype, "branchId", void 0);
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(() => type_graphql_1.Float),
     __metadata("design:type", Number)
 ], AccountInput.prototype, "balance", void 0);
 AccountInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], AccountInput);
 let AccountResolver = class AccountResolver {
     addAccount(args, { req }) {
@@ -157,56 +157,56 @@ let AccountResolver = class AccountResolver {
     }
 };
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("args")),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("args")),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [AccountInput, Object]),
     __metadata("design:returntype", Promise)
 ], AccountResolver.prototype, "addAccount", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("args")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("args")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, AccountInput]),
     __metadata("design:returntype", Promise)
 ], AccountResolver.prototype, "editAccount", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
-    __param(1, type_graphql_1.Arg("ammount", () => type_graphql_1.Float)),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(1, (0, type_graphql_1.Arg)("ammount", () => type_graphql_1.Float)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
 ], AccountResolver.prototype, "changeAmmount", null);
 __decorate([
-    type_graphql_1.Mutation(() => branch_1.BooleanResponse),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Mutation)(() => branch_1.BooleanResponse),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AccountResolver.prototype, "deleteAccount", null);
 __decorate([
-    type_graphql_1.Query(() => [Account_1.Account]),
-    __param(0, type_graphql_1.Arg("branch", { nullable: true })),
+    (0, type_graphql_1.Query)(() => [Account_1.Account]),
+    __param(0, (0, type_graphql_1.Arg)("branch", { nullable: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AccountResolver.prototype, "getAccounts", null);
 __decorate([
-    type_graphql_1.Query(() => Account_1.Account, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    (0, type_graphql_1.Query)(() => Account_1.Account, { nullable: true }),
+    __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AccountResolver.prototype, "getAccount", null);
 AccountResolver = __decorate([
-    type_graphql_1.Resolver(Account_1.Account)
+    (0, type_graphql_1.Resolver)(Account_1.Account)
 ], AccountResolver);
 exports.AccountResolver = AccountResolver;
 //# sourceMappingURL=account.js.map
